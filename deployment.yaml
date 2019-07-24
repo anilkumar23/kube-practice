@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
         - name: account-service
-          image: anil9848/account-service:latest
+          image: 092390458462.dkr.ecr.us-east-1.amazonaws.com/account-service:latest
           ports:
             - containerPort: 80
