@@ -1,9 +1,5 @@
 pipeline {
   agent any
-  tools { 
-        maven 'Maven'
-        jdk 'JAVA_HOME'
-  }
   stages {
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace... */
@@ -16,14 +12,6 @@ pipeline {
         sh 'mvn -B -DskipTests clean package'
         sh 'echo $USER'
         sh 'echo whoami'
-      }
-    }
-    stage('Push image to private docker-hub') {
-      steps {
-        withDockerRegistry([credentialsId: 'docker-hub', url: "https://index.docker.io/v1/"]) {
-          sh 'sudo docker login https://index.docker.io/v1/ -u=anil9848 -p=Password@12345'
-          sh 'sudo /usr/bin/docker push anil9848/account-service:latest'
-        }
       }
     }
     stage('Push image to aws ecr'){
