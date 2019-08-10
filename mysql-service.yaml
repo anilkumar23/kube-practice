@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mysql
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 30306
   selector:
